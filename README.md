@@ -10,5 +10,15 @@ The dataset (including original readme.txt) can be found in the `/dataset` folde
 I created full Python scripts in the `/py_scripts` folder and accompanying Jupyter notebooks in the `/notebooks` folder.
 
 ### Purpose of this repo
-Each python script utilizes a different machine learning technique -- LogisticRegression, NaiveBayes, KMeans, DecisionTree, RandomForest, neural net -- 
-to predict whether a given observation should be recorded as **0** (noise) or **1** (pulsar)
+Each python script utilizes a different machine learning technique -- DecisionTree, KNeighbors, LogisticRegression, NaiveBayes, RandomForest, neural net -- 
+to classify a given observation as **0** (noise) or **1** (pulsar)
+
+## About the HTRU2 dataset
+The data itself consists only of the Big 4 [statistical moments](https://en.wikipedia.org/wiki/Moment_(mathematics)):
+- Mean
+- Standard deviation
+- Skewness
+- Kurtosis
+- DM-adjusted mean, DM-adjusted stdev, etc. Check the `/dataset/readme.txt` which references [this paper](http://www.scienceguyrob.com/wp-content/uploads/2016/12/WhyArePulsarsHardToFind_Lyon_2016.pdf) for more context
+
+The dataset is unbalanced -- something like 90% of observations are radio noise and only 10% are pulsars. I plan to learn more about the parameters of each ML algorithm and make future adjustments to minimize false negatives here.
