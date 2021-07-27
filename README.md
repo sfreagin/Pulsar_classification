@@ -15,10 +15,10 @@ to classify a given observation as **0** (noise) or **1** (pulsar)
 
 ## About the HTRU2 dataset
 The data itself consists only of the Big 4 [statistical moments](https://en.wikipedia.org/wiki/Moment_(mathematics)):
-- Mean
-- Standard deviation
-- Skewness
-- Kurtosis
-- DM-adjusted mean, DM-adjusted stdev, etc. Check the `/dataset/readme.txt` which references [this paper](http://www.scienceguyrob.com/wp-content/uploads/2016/12/WhyArePulsarsHardToFind_Lyon_2016.pdf) for more context
+- **Mean**
+- **Standard deviation**
+- **Skewness**
+- **Kurtosis**
+- Also DM-adjusted mean, DM-adjusted stdev, etc. Check the `/dataset/readme.txt` and [this paper](http://www.scienceguyrob.com/wp-content/uploads/2016/12/WhyArePulsarsHardToFind_Lyon_2016.pdf) for more context
 
-The dataset is also unbalanced -- something like 90% of observations are radio noise and only 10% are pulsars. I plan to learn more about the parameters of each ML algorithm and make future adjustments to minimize false negatives here.
+The dataset is also unbalanced -- something like 90% of observations are radio noise and only 10% are pulsars. I plan to learn more about the parameters of each ML algorithm and make future adjustments to minimize false negatives.
