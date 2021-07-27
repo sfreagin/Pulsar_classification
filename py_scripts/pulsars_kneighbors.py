@@ -7,6 +7,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 
+from sklearn.model_selection import GridSearchCV
+
+
 #create column headers, pull in the dataset
 column_headers = ['mean','st_dev','exc_kurtosis','skewness','dm_mean','dmst_dev','dmexc_kurtosis','dmskewness','pulsar']
 pulsar_df = pd.read_csv("../dataset/HTRU_2.csv",names=column_headers)
@@ -36,3 +39,33 @@ class_report = metrics.classification_report(y_test,y_preds)
 
 print(f"Confusion matrix:\n{conf_matrix}\n")
 print(f"Classification report:\n{class_report}")
+
+
+#############################
+# GridSearchCV to find the best parameters
+
+print('*********************************************************')
+print(f"\nNOW we introduce a GridSearch to find the best parameters")
+
+parameters_grid = {'n_neighbors' : [1,2,3,4,5,6,7,8,9,10],
+                  'weights' : ['uniform', 'distance'],
+                  'leaf_size' : [10, 20, 30, 40, 50, 60]}
+
+grid_cv = GridSearchCV(estimator = KNeighborsClassifier(),
+                       param_grid=parameters_grid,
+                       scoring='recall',
+                       cv=5)
+
+grid_cv.fit(X_train_sc, y_train)
+
+print(f"\nThe best parameters are:\n{grid_cv.best_params_}")
+
+print(f"\nGrid train score: {grid_cv.score(X_train_sc,y_train)}")
+print(f"Grid test score: {grid_cv.score(X_test_sc,y_test)}\n")
+
+#make predictions
+grid_preds = grid_cv.predict(X_test_sc)
+
+print(f"Grid confusion matrix:\n{metrics.confusion_matrix(y_test, grid_preds)}\n")
+
+print(f"Grid classification report:\n{metrics.classification_report(y_test,grid_preds)}")
