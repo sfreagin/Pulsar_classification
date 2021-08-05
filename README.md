@@ -9,9 +9,14 @@ The dataset was downloaded from the [UCI repository](https://archive.ics.uci.edu
 The dataset (including original readme.txt) can be found in the `/dataset` folder. 
 I created full Python scripts in the `/py_scripts` folder and accompanying Jupyter notebooks in the `/notebooks` folder.
 
-## Purpose of this repo
-Each python script utilizes a different machine learning technique -- DecisionTree, KNeighbors, LogisticRegression, NaiveBayes, RandomForest, neural net -- 
-to classify a given observation as **0** (noise) or **1** (pulsar)
+## Objective
+Each python script utilizes a different machine learning technique to classify a given observation as **0** (noise) or **1** (pulsar). Each script utilizes default algorithm parameters, and then tunes parameters via gridsearch to increase Recall (minimize false negatives)
+- DecisionTree
+- KNeighbors
+- LogisticRegression
+- NaiveBayes
+- RandomForest
+- Neural net (tensorflow / Dense / Sequential)
 
 ## About the HTRU2 dataset
 The data itself consists only of the Big 4 [statistical moments](https://en.wikipedia.org/wiki/Moment_(mathematics)):
